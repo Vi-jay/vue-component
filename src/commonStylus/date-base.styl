@@ -1,0 +1,123 @@
+.dateComponent
+  position absolute
+  top 50px
+  left 41%
+  width 250px
+  color: #48576a;
+  border: 1px solid #d1dbe5;
+  box-shadow: 0 2px 6px #ccc;
+  background: #fff;
+  border-radius: 2px;
+  line-height: 20px;
+  margin: 5px 0;
+  z-index 80
+  transition all 0.5s
+  &.showDateComponent-enter, &.showDateComponent-leave-active {
+    opacity: 0
+  }
+  .dateHeader
+    display flex
+    margin: 12px;
+    text-align: center;
+    .button
+      display inline-block
+      vertical-align top
+      flex 1
+      padding 0
+      margin 0
+      border none
+      box-shadow none
+      background none
+      color #97a8be;
+      &:active, &:focus
+        color #50bfff
+    .wrapper
+      display flex
+      width 100px
+      padding 0
+      margin 0 10px
+      .button
+        color black
+        &:active, &:focus
+          color #50bfff
+      .year
+        vertical-align top
+        flex 1
+        width 0
+        text-align right
+        border none
+        box-shadow none
+        background none
+        line-height 30px
+      .date
+        width 0
+        vertical-align top
+        text-align center
+        flex 1
+        padding 0
+        border none
+        box-shadow none
+        background none
+        line-height 30px
+  .dateContent
+    margin:0 15px 15px 12px;
+    text-align: center;
+    .dateTable
+      width 100%
+      font-size: 12px;
+      user-select none
+      border-collapse: collapse;
+      border-spacing: 2px;
+      color #48576a
+      tr
+        width 100%
+        display flex
+      td, th
+        display table-cell
+        flex 1
+        padding: 5px;
+        vertical-align: inherit;
+        text-align center
+        border-radius 15%
+      th
+        color: #8391a5;
+        font-weight: 600;
+        user-select none
+      td:hover
+        background #cccccc
+      td:active
+        background #50bfff
+      [wj_disabled="wj_disabled"]
+        border-radius 0
+        background #f4f4f4;
+        color #ccc
+        cursor: not-allowed;
+        &:hover
+          background #f4f4f4
+      [wj_disabled="wj_white_disabled"]
+        border-radius 0
+        color #ccc
+        cursor: not-allowed;
+        &:hover
+          background #ffffff
+
+.dateControl
+  position absolute
+  top 15px
+  left 41%
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #bfcbd9;
+  box-sizing: border-box;
+  color: #1f2d3d;
+  display: block;
+  font-size: inherit;
+  height: 36px;
+  line-height: 1;
+  outline: none;
+  padding: 3px 10px;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  width: 250px;
+  &:hover
+    border-color: #8391a5;

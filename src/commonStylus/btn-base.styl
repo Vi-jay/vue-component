@@ -1,0 +1,123 @@
+.buttons
+  display flex
+  align-items center
+  flex-direction column
+  margin-top 50px
+  .row
+    display flex
+    width 400px
+    margin-top 50px
+    justify-content space-between
+    flex-wrap wrap
+
+.button
+  width 80px
+  height 30px
+  background #ffffff
+  border 1px solid #bfcbd9
+  border-radius 7%
+  outline 0
+  cursor pointer
+  box-shadow: 2px 2px 2px #888888;
+  &:active
+    background #cccccc
+    box-shadow: -1px -1px 2px #888888;
+  &:hover, &:focus
+    color: #4db3ff;
+    border-color: #20a0ff;
+.oval
+  border-radius 30px 30px 30px 30px
+.leaf
+  border-radius 30px 0 30px 0
+.primary
+  color: #fff;
+  background-color: #1d90e6;
+  border-color: #1d90e6;
+  &:hover, &:focus
+    color #fff;
+    background #20a0ff;
+    border-color: #20a0ff;
+  &:active
+    background #4db3ff;
+    border-color: #4db3ff;
+.character
+  background transparent
+  border none
+  color #20a0ff
+  &:active
+    background transparent
+    color #7e8c8d
+    box-shadow none
+.disabled
+  background #cccccc
+  color #7e8c8d
+  box-shadow none
+  &:active, &:hover, &:focus
+    color: #7e8c8d;
+    border: none;
+    background #cccccc;
+    cursor not-allowed
+    box-shadow none
+.success
+  color: #fff;
+  background-color: #13ce66;
+  border-color: #13ce66;
+  &:hover, &:focus
+    color: #fff;
+    background-color: #42d885;
+    border-color: #42d885;
+  &:active
+    background: #11b95c;
+    border-color: #11b95c;
+    color: #fff;
+.warning
+  color: #fff;
+  background-color: #f7ba2a;
+  border-color: #f7ba2a;
+  &:hover, &:focus
+    background: #f9c855;
+    border-color: #f9c855;
+    color: #fff;
+  &:active
+    background: #FFA500;
+    border-color: #FFA500;
+    color: #fff;
+.danger
+  color: #fff;
+  background-color: #ff4949;
+  border-color: #ff4949;
+  &:hover, &:focus
+    background: #ff6d6d;
+    border-color: #ff6d6d;
+    color: #fff;
+  &:active
+    background: #e64242;
+    border-color: #e64242;
+    color: #fff;
+.info
+  color: #fff;
+  background-color: #50bfff;
+  border-color: #50bfff;
+  &:hover, &:focus
+    background: #73ccff;
+    border-color: #73ccff;
+    color: #fff;
+  &:active
+    background: #48ace6;
+    border-color: #48ace6;
+    color: #fff;
+[btn^="primary"]
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  background-color: #20a0ff
+  border-color: #20a0ff
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  padding 10px
+  font-size: 20px;
+  border-radius: 4px;
+  &:active
+    border-color: #4db3ff;
+    background: #4db3ff;
