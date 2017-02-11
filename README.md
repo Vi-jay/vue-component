@@ -1,5 +1,5 @@
 # vue-component
-keep core for my project
+keep care for my project
 
 You can check dome for learn more,
 
