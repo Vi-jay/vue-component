@@ -1,40 +1,47 @@
 <template>
     <div>
-        <transition name="showDateComponent">
-        <div class="dateComponent" v-show="showDateComponent">
-            <div class="dateHeader">
-                <button class="button" icon="icon-first"
-                        v-on:click.prevent.self="previousYearDate($event)"
-                ></button>
-                <button class="button" icon="icon-previous"
-                        v-on:click.prevent.self="previousMonthDate($event)"></button>
-                <div class="wrapper">
-                    <button class="button year" v-on:click.stop="clickYear($event)">{{currentDate.getFullYear()}} 年
-                    </button>
-                    <button class="button date">{{currentDate.getMonth()+1}} 月</button>
+        <div class="dateWrapper">
+            <input type="text" placeholder="请选择日期" class="dateControl" v-on:click.stop="showDate($event)"
+                   v-model="dateValue">
+            <transition name="showDateComponent">
+                <div class="dateComponent" v-show="showDateComponent" v-on:click.stop>
+                    <div class="dateHeader">
+                        <button class="button" icon="icon-first"
+                                v-on:click.prevent.self="previousYearDate($event)"
+                        ></button>
+                        <button class="button" icon="icon-previous"
+                                v-on:click.prevent.self="previousMonthDate($event)"></button>
+                        <div class="wrapper">
+                            <button class="button year" v-on:click.stop="clickYear($event)">
+                                {{currentDate.getFullYear()}} 年
+                            </button>
+                            <button class="button date">{{currentDate.getMonth()+1}} 月</button>
+                        </div>
+                        <button class="button" icon="icon-next"
+                                v-on:click.prevent.self="nextMonthDate($event)"></button>
+                        <button class="button" icon="icon-last" v-on:click.prevent.self="nextYearDate($event)"></button>
+                    </div>
+                    <div class="dateContent">
+                        <table class="dateTable">
+                            <tr>
+                                <th>日</th>
+                                <th>一</th>
+                                <th>二</th>
+                                <th>三</th>
+                                <th>四</th>
+                                <th>五</th>
+                                <th>六</th>
+                            </tr>
+                            <tr v-for="(value,key,index) in dataItem">
+                                <td v-for="day in value" :wj_disabled="isDisable(day)" v-on:click.stop="pushValue(day)">
+                                    {{day.getDate()}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <button class="button" icon="icon-next" v-on:click.prevent.self="nextMonthDate($event)"></button>
-                <button class="button" icon="icon-last" v-on:click.prevent.self="nextYearDate($event)"></button>
-            </div>
-            <div class="dateContent">
-                <table class="dateTable">
-                    <tr>
-                        <th>日</th>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                    </tr>
-                    <tr v-for="(value,key,index) in dataItem">
-                        <td v-for="day in value" :wj_disabled="isDisable(day,index)">{{day.getDate()}}</td>
-                    </tr>
-                </table>
-            </div>
+            </transition>
         </div>
-        </transition>
-        <input type="text" placeholder="请选择日期" class="dateControl" v-on:click.prevent.self="showDateComponent =!showDateComponent">
     </div>
 </template>
 
@@ -45,7 +52,8 @@
                 disableItem: new Map,
                 dataItem: {0: []},
                 currentDate: new Date(),
-                showDateComponent:false
+                showDateComponent: false,
+                dateValue: ""
             }
         },
         methods: {
@@ -159,6 +167,25 @@
                 this.currentDate = new Date(nextMonthDate);
                 ele.toElement.blur();
             },
+            showDate(){
+                this.showDateComponent = !this.showDateComponent;
+                if (this.showDateComponent) {
+                    document.body.onclick = () => {
+                        this.showDate(false);
+                    }
+                } else {
+                    document.body.onclick = null;
+                }
+            },
+            pushValue(day){
+                if (!this.isDisable(day)) {
+                    let date = day.getDate();
+                    let Month = day.getMonth() + 1;
+                    date = date < 10 ? "0" + date : date;
+                    Month = Month < 10 ? "0" + Month : Month;
+                    this.dateValue = day.getFullYear() + "-" + Month + "-" + date;
+                }
+            }
         },
         created(){
             this.getCurrentMonth(new Date());
